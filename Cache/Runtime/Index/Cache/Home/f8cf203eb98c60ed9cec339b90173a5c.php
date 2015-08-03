@@ -1,0 +1,50 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>致麻烦啰嗦的财务</title> 
+  <!-- Loading Bootstrap -->
+    <link href="/checkin/Public/index/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="/checkin/Public/index/css/flat-ui.css" rel="stylesheet">
+    <link href="/checkin/Public/index/css/demo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/checkin/Public/index/images/icons/png/Clipboard.png">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+      function a(){
+        alert("上帝保佑你，阿门～");
+      }
+    </script>
+  </head>
+  <body>
+    <form class="form-signin" role="form" action="<?php echo U('Index/loginHandle');?>" method='post' id="form">
+    <div class="container">
+      <div class="login">
+        <div class="login-screen">
+
+          <div class="login-icon">
+            <img src="/checkin/Public/index/images/icons/png/Pensils.png" alt="Welcome to Mail App">
+            <h4>欢迎来到 <small>打卡系统</small></h4>
+          </div>
+
+          <div class="login-form">
+            <br>
+            <div class="form-group">
+              <input class="form-control login-field" value="" placeholder="输入您的姓名(简体)" id="login-name" type="text" name='name'>
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" href="#">签 到</button>
+            <a class="login-link" href="#" onclick="a()">无法登入请找耶稣</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </body>
+</html>
