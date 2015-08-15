@@ -48,23 +48,31 @@ class IndexController extends Controller {
 
     public function day(){
         $this->name   = $_GET['name'];
-        $this->date   = date('Y-m-d',time());
+        $date         = date('Y-m-d',time());
         $people       = M('people')->select();
         for($i=0;$i<count($people);$i++){
             $where = array('people_id' => $people[$i]['id']);
-            if($data = M('time')->where($where)->select()){
-                $people[$i]['startTime'] = date('H:i:s' ,$data[0]['startTime']);
-                if($data[0]['endTime'] == 0){
-                    $people[$i]['endTime']   = '没签到';
-                }else{
-                    $people[$i]['endTime']   = date('H:i:s' ,$data[0]['endTime']);
+            $data = M('time')->where($where)->select();
+            $flag = 0;
+            for($j=0;$j<count($data);$j++)
+            {
+                if(date("Y-m-d",$data[$j]['startTime']) == $date){
+                    $people[$i]['startTime'] = date('H:i:s' ,$data[$j]['startTime']);
+                    if($data[$j]['endTime'] == 0){
+                        $people[$i]['endTime']   = '没签到';
+                    }else{
+                        $people[$i]['endTime']   = date('H:i:s' ,$data[$j]['endTime']);
+                    }
+                    $flag = 1;
                 }
-            }else{
+            }
+            if($flag == 0){
                 $people[$i]['startTime'] = '没签到';
                 $people[$i]['endTime']   = '没签到';
             }
         }
         $this->people = $people;
+        $this->date   = $date;
         $this->display();
     }
 
